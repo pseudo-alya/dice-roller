@@ -7,7 +7,8 @@ const app = express();
 app.use(express.static(path.join(__dirname, "docs")));
 
 // Endpoint for rolling the dice
-app.get("/roll-dice", (req, res) => {
+app.get('/roll-dice', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store'); // Disable caching
   const diceRoll = Math.floor(Math.random() * 6) + 1;
   res.json({ diceRoll });
 });
