@@ -1,20 +1,18 @@
-const express = require("express");
-const path = require("path");
+const express = require('express');
+const path = require('path');
 
 const app = express();
 
-// Serve all files in the "docs" folder
-app.use(express.static(path.join(__dirname, "docs")));
+// Serve static files from the current directory (root)
+app.use(express.static(__dirname));
 
-// Endpoint for rolling the dice
+// Dice endpoint
 app.get('/roll-dice', (req, res) => {
-  res.setHeader('Cache-Control', 'no-store'); // Disable caching
   const diceRoll = Math.floor(Math.random() * 6) + 1;
   res.json({ diceRoll });
 });
 
-// Start the server
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
