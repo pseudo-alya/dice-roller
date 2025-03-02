@@ -4,7 +4,7 @@ const path = require('path');
 const app = express();
 
 // Serve static files from the current directory (root)
-app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'docs')));
 
 // Dice endpoint
 app.get('/roll-dice', (req, res) => {
