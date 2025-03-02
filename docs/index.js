@@ -18,13 +18,13 @@ async function rollDice() {
     diceSound.play();
   
     // Fetch the random dice number from the server
-    const response = await fetch("/roll-dice"); // <-- route must match your server.js
+    const response = await fetch("/roll-dice"); // We made sure the route matches the server.js
     const data = await response.json();
     const diceRoll = data.diceRoll;
   
     // After the animation, show the result
     setTimeout(() => {
-      diceImage.src = `dice${diceRoll}.png`;      // MUST use backticks `...`
+      diceImage.src = `dice${diceRoll}.png`;
       diceNumberText.textContent = `You rolled: ${diceRoll}`;
       rollButton.disabled = false;
     }, 1000);
